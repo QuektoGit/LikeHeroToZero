@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html lang="de"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Like Hero To Zero</title>
+</h:head>
+
+<h:body style="margin: 1em; background-color: #2f5d50">
+    <p:outputLabel style="font-size: 32px; color: white"><em>Like Hero To Zero</em> - CO2 Ausstoß verschiedener Staaten der Erde</p:outputLabel>
+    <p:dataTable id="countryTable" var="country" value="#{countryList.get()}"
+                 scrollable="true" scrollHeight="640px" stripedRows="true" style="margin-top: 2em; margin-bottom: 1em">
+        <p:column headerText="Land" sortBy="#{country.name}" style="width: 40%">
+            <p:outputLabel value="#{country.name}"/>
+        </p:column>
+        <p:column headerText="Jährlich" sortBy="#{country.annualEmissions}" sortOrder="descending" style="width: 30%">
+            <p:outputLabel value="#{country.annualEmissions}"/>
+        </p:column>
+        <p:column headerText="Pro Kopf" sortBy="#{country.annualEmissionsPerCapita}"  style="width: 30%">
+            <p:outputLabel value="#{country.annualEmissionsPerCapita}"/>
+        </p:column>
+    </p:dataTable>
+
+    <h:form>
+        <p:commandButton value="Bearbeiten" icon="pi pi-pencil" action="#{controller.login()}"
+                         styleClass="ui-button-primary"/>
+    </h:form>
+</h:body>
+</html>
